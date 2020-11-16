@@ -84,29 +84,26 @@ func divideIfWholeGuard(_ value: Int, by divisor: Int){
     print(answer)
 }
 
-
-//let test = divideIfWhole(10, by: 2)
+let test = divideIfWhole(10, by: 2)
 let test2: () = divideIfWholeGuard(3, by: 2)
 
 
-/*
- func divideIfWhole(_ value: Int, by divisor: Int){
- var answer = 0
- var test = 0
-     for _ in 1...value{
-         if test % divisor == 0{
-             answer += 1
-             test -= 1
-         } else{
-             test -= 1
-         }
-     }
-     if answer >= 1{
-         print("Yep, it divides \(answer) times")
-     }else{
-         print("Not divisible :[")
-     }
- }
- divideIfWhole(10, by: 2)
- 
- */
+let number: Int??? = 10
+//print(number!!!)
+
+if let nnum = number {
+    if let nnnum = nnum{
+        if let n = nnnum{
+            print(n)
+        }
+    }
+}
+
+func printNumber(_ number: Int???){
+    guard let num = number else{
+        print("123321")
+        return
+    }
+}
+printNumber(100)
+
