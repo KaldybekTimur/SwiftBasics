@@ -104,6 +104,8 @@ repeatTask(times: 10) {
 
 
 func mathSum(times: Int, operation: (Int) -> Int) -> Int{
-    
-    return 1
+    for _ in 1...times{
+    return operation(times)
+    }
+    return operation(times)
 }
