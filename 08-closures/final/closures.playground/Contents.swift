@@ -109,3 +109,29 @@ func mathSum(times: Int, operation: (Int) -> Int) -> Int{
     }
     return operation(times)
 }
+
+// Iterating over collections with closures
+
+var prices = [1.5, 10, 4.99, 2.30, 8.19]
+let largePrices = prices.filter {
+$0 > 5
+}
+let largePrize = prices.first{
+    $0 > 5
+}
+print(largePrize ?? 0)
+
+let userInput = ["0", "11", "haha", "42"]
+
+let numbers1 = userInput.map {
+Int($0)
+}
+print(numbers1)
+
+let numbers2 = userInput.compactMap {
+Int($0)
+}
+print(numbers2)
+
+
+
