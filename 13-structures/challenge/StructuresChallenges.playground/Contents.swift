@@ -18,45 +18,45 @@ struct TShirt {
   let size: String
   let color: String
   let material: String
-
-  // Note: Using a Float is good for demonstrations, but you should not use Floats or
-  // Doubles for currency!
-  //
-  // Read http://stackoverflow.com/questions/3730019/why-not-use-double-or-float-to-represent-currency
-  func cost() -> Double {
-
-    let basePrice = 10.0
-
-    let sizeMultiplier: Double
-    switch size {
-    case Small, Medium:
-      sizeMultiplier = 1.0
-    case Large, XLarge:
-      sizeMultiplier = 1.1
-    default:
-      // Special order!
-      sizeMultiplier = 1.2
+    
+    // Note: Using a Float is good for demonstrations, but you should not use Floats or
+    // Doubles for currency!
+    //
+    // Read http://stackoverflow.com/questions/3730019/why-not-use-double-or-float-to-represent-currency
+    
+    func cost() -> Double{
+        let basePrice = 10.0
+        
+        let sizeMultiplier: Double
+        switch size{
+        case Small, Medium:
+          sizeMultiplier = 1.0
+        case Large, XLarge:
+          sizeMultiplier = 1.1
+        default:
+          // Special order!
+          sizeMultiplier = 1.2
+        }
+        let materialMultipler: Double
+        switch material{
+        case Cotton:
+          materialMultipler = 1.0
+        case Polyester:
+          materialMultipler = 1.1
+        case Polyester:
+          materialMultipler = 1.5
+        default:
+          // Special order!
+          materialMultipler = 2.0
+        }
+        
+        return basePrice * sizeMultiplier * materialMultipler
     }
-
-    let materialMultipler: Double
-    switch material {
-    case Cotton:
-      materialMultipler = 1.0
-    case Polyester:
-      materialMultipler = 1.1
-    case Polyester:
-      materialMultipler = 1.5
-    default:
-      // Special order!
-      materialMultipler = 2.0
-    }
-
-    return basePrice * sizeMultiplier * materialMultipler
-  }
 }
 
-TShirt(size: Medium, color: "Green", material: Cotton).cost()
-TShirt(size: XLarge, color: "Gray", material: Wool).cost()
+print(TShirt(size: "Large", color: "Black", material: "Polyester").cost())
+print(TShirt(size: Medium, color: "Green", material: Cotton).cost())
+print(TShirt(size: XLarge, color: "Gray", material: Wool).cost())
 
 
 
