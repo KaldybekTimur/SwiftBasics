@@ -90,7 +90,7 @@ struct Location2 {
 
   // String in GPS format “44.9871,-93.2758”
   init(coordinateString: String) {
-    let crdSplit = coordinateString.characters.split(separator: {$0 == "," })
+    let crdSplit = coordinateString.components(separatedBy: ",")
     latitude = atof(String(crdSplit.first!))
     longitude = atof(String(crdSplit.last!))
   }
@@ -131,11 +131,6 @@ struct Order {
     }
   }
 }
-
-//:
-//: Initializer Rules
-//:
-
 
 
 struct ClimateControl {
@@ -232,3 +227,83 @@ r1.range = 100
 // range1 now has ’100’, b still has ‘200’
 print(r1.range) // 100
 print(r2.range) // 200
+
+// MARK: - Getter - Setter
+
+/**Вычисляемое свойство, которое вы написали в предыдущем разделе, называется вычисляемым свойством только для чтения. У него есть блок кода для вычисления значения свойства, называемый геттером.
+ Также возможно создать вычисляемое свойство для чтения и записи с двумя блоками кода: геттером и сеттером.
+ Этот сеттер работает не так, как вы могли ожидать.**/
+
+struct TV {
+  var height: Double
+  var width: Double
+// 1
+    var diagonal: Int {
+      // 1
+    get { // 2
+    let result = (height * height +
+    width * width).squareRoot().rounded()
+        return Int(result)
+      }
+    set { // 3
+    let ratioWidth = 16.0
+    let ratioHeight = 9.0
+    // 4
+    let ratioDiagonal = (ratioWidth * ratioWidth +
+    ratioHeight * ratioHeight).squareRoot()
+    height = Double(newValue) * ratioHeight / ratioDiagonal
+    width = height * ratioWidth / ratioHeight
+        }
+    }
+}
+
+// MARK: - Property observers
+/**
+Наблюдатель willSet вызывается, когда свойство собирается быть измененным, в то время как наблюдатель didSet вызывается после изменения свойства. Их синтаксис аналогичен геттерам и сеттерам:
+*/
+
+struct Level{
+    
+    static var highestLevel = 1
+    let id: Int
+    var boss: String
+    var unlocked:Bool{
+        didSet{
+        if unlocked && id > Self.highestLevel{
+            Self.highestLevel = id
+            }
+        }
+    }
+}
+
+// MARK: - Limiting observers
+
+struct LightBulb{
+   static var maxCurrent = 40
+    var current = 0 {
+        willSet{
+            print("Old value changed form \(current) to \(newValue)")
+            if newValue > LightBulb.maxCurrent{
+                print("Turn off")
+            } else {
+                print("OK")
+            }
+                }
+        didSet{
+            if current > LightBulb.maxCurrent {
+                print("""
+                              Current is too high,
+                              falling back to previous setting.
+                              """)
+                current = oldValue
+            }
+        }
+     
+    }
+}
+
+var light = LightBulb()
+light.current = 50
+var current = light.current
+light.current = 40
+current = light.current // 40
