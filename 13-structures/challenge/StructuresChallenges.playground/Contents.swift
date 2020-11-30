@@ -129,3 +129,81 @@ board.fire(location: Coordinate(x: 5, y: 6))
 
 // miss (just past the end of battleship)
 board.fire(location: Coordinate(x: 5, y: 7))
+
+
+// MARK: - Turning a function into a method
+
+
+var months = ["January", "February", "March",
+             "April", "May", "June",
+             "July", "August", "September",
+             "October", "November", "December"]
+
+struct SimpleDate1{
+    var month: String
+//    var calculate : Int{
+//        get{
+//            let result = months.firstIndex(of: "December")! - months.firstIndex(of: month)!
+//            return Int(result)
+//        }
+    
+    func monthsUntilWinterBreak(from date: SimpleDate1) -> Int {
+        months.firstIndex(of: "December")! - months.firstIndex(of: month)!
+    }
+}
+let date = SimpleDate1(month: "March")
+date.monthsUntilWinterBreak(from: date)
+
+
+// MARK: - Initializers in structures
+
+ ///Инициализаторы обеспечивают установку всех свойств до того, как экземпляр будет готов к использованию:
+
+struct SimpleDate2 {
+    var month: String
+    var day: Int
+    
+    init(month: String, day: Int) {
+        self.month = month
+        self.day = day
+    }
+
+    
+    
+func monthsUntilWinterBreak() -> Int { months.firstIndex(of: "December")! -
+months.firstIndex(of: month)!
+    }
+}
+
+let valentinesDay = SimpleDate2(month: "February", day: 14)
+valentinesDay.month // February
+valentinesDay.day // 14
+
+
+// MARK: - Default values and initializers
+
+ struct SimpleDate {
+//1
+    var month = "January"
+    var day = 1
+//2
+    func monthsUntilWinterBreak() -> Int {
+        months.firstIndex(of: "December")! - months.firstIndex(of: month)!
+    }
+}
+ 
+
+let newYear = SimpleDate()
+newYear.day
+newYear.month
+
+let octoberFirst = SimpleDate(month: "October")
+octoberFirst.month // October
+octoberFirst.day // 1
+
+let januaryTwentySecond = SimpleDate(day: 22)
+januaryTwentySecond.month // January
+januaryTwentySecond.day // 22
+
+
+/// Ключевое слово mutating отмечает метод, изменяющий значение структуры. Поскольку структура является типом значения, система копирует ее каждый раз, когда она передается в приложение. Если метод изменяет значение одного из свойств, то исходный и скопированный экземпляры больше не будут эквивалентны.

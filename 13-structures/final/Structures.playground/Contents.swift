@@ -307,3 +307,16 @@ light.current = 50
 var current = light.current
 light.current = 40
 current = light.current // 40
+
+
+struct Circle {
+  lazy var pi = { ((4.0 * atan(1.0 / 5.0)) - atan(1.0 / 239.0)) * 4.0 }()
+var radius = 0.0
+var circumference: Double {
+    mutating get { //Поскольку значение пи изменяется, get длины окружности должен быть помечен как mutating
+      pi * radius * 2
+    }
+  }
+  init(radius: Double) { //Поскольку pi - это хранимое свойство структуры, вам понадобится настраиваемый инициализатор, чтобы использовать только радиус
+self.radius = radius }
+}
