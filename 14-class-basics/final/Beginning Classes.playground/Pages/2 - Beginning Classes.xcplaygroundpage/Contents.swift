@@ -95,7 +95,7 @@ class Student {
 
   // recordGrade mutates the state of Student,
   // by appending a new Grade
-  func recordGrade(grade: Grade) {
+  func recordGrade(_ grade: Grade) {
     grades.append(grade)
   }
 }
@@ -151,3 +151,19 @@ class EncapsulatedStudent {
         grades.append(grade)
     }
 }
+
+
+/*
+ Structures vs. classes recap
+ Structures
+ • Полезно для представления values.
+ • Неявное копирование значений.
+ • Становится полностью неизменяемым (immutable) при объявлении с помощью let.
+ • Быстрое выделение памяти (stack).
+ Classes
+ • Полезно для представления объектов с идентичностью.
+ • Неявное совместное использование объектов.
+ • Внутренние элементы могут оставаться изменяемыми (mutable), даже если они объявлены с помощью let.
+ • Более медленное выделение памяти (heap).
+ */
+

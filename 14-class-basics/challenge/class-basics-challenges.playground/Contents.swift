@@ -13,33 +13,59 @@ import Foundation
 //: • Create jane and john users and have them create and share lists. Have both jane and john modify the same list and call printList() from both users. Are all the changes reflected?
 //:
 //: • What happens when you implementing the same with structs. What problems do you run into?
-
-class User {                                                                                                     ,,,,,,,,,,,,,,,,,,,,,,,,,,,
-  var lists: [String: List] = [:]
+class User{
+    var lists: [String: List] = [:]
     
-  func addList(list: List) {
-    lists[list.name] = list
- 
-  }
-}
-
-class List {
-  let name: String
-  var movies: [String] = []
-
-  init(name: String) {                                                          000-
-    self.name = name
-  }
-
-  func printList() {
-
-    print("Movie List: \(name)")
-    for movie in movies {
-      print(movie)
+    func addList(list: List){
+        lists[list.name] = list
     }
-    print("\n")
-  }
 }
+
+class List{
+    var name: String
+    var movies: [String] = []
+    
+    init (name: String){
+        self.name = name
+    }
+
+
+func printList(){
+    print("Movie List: \(name)")
+    for movie in movies{
+        print(movie)
+        }
+    print("\n")
+    }
+}
+
+
+//class User {
+//  var lists: [String: List] = [:]
+//
+//  func addList(list: List) {
+//    lists[list.name] = list
+//
+//  }
+//}
+//
+//class List {
+//  let name: String
+//  var movies: [String] = []
+//
+//  init(name: String) {
+//    self.name = name
+//  }
+//
+//  func printList() {
+//
+//    print("Movie List: \(name)")
+//    for movie in movies {
+//      print(movie)
+//    }
+//    print("\n")
+//  }
+//}
 
 // Give John and Jane an "Action" list
 let jane = User()
