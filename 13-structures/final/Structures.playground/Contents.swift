@@ -73,8 +73,7 @@ pizzaRange.range = 250
 //:
 //:
 
-let constPizzaRange =
-DeliveryRange(range: 200, center: storeLocation)
+let constPizzaRange = DeliveryRange(range: 200, center: storeLocation)
 
 // Error: change ‘let’ to ‘var’ to make it mutable
 //constPizzaRange.range = 250
@@ -82,7 +81,6 @@ DeliveryRange(range: 200, center: storeLocation)
 //
 //: Struct Initializers
 //
-
 
 struct Location2 {
   let latitude: Double
@@ -230,9 +228,10 @@ print(r2.range) // 200
 
 // MARK: - Getter - Setter
 
-/**Вычисляемое свойство, которое вы написали в предыдущем разделе, называется вычисляемым свойством только для чтения. У него есть блок кода для вычисления значения свойства, называемый геттером.
+/**
+ Вычисляемое свойство, которое вы написали в предыдущем разделе, называется вычисляемым свойством только для чтения. У него есть блок кода для вычисления значения свойства, называемый геттером.
  Также возможно создать вычисляемое свойство для чтения и записи с двумя блоками кода: геттером и сеттером.
- Этот сеттер работает не так, как вы могли ожидать.**/
+*/
 
 struct TV {
   var height: Double
@@ -320,3 +319,13 @@ var circumference: Double {
   init(radius: Double) { //Поскольку pi - это хранимое свойство структуры, вам понадобится настраиваемый инициализатор, чтобы использовать только радиус
 self.radius = radius }
 }
+
+
+/*
+ In Swift, the following types are value types:
+
+ Structs, such as Int, String, Double and Bool
+ Arrays, dictionaries and sets
+ Enumerations and tuples
+ 
+ */

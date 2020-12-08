@@ -8,6 +8,7 @@
 //: // TODO - Narrative with chapter
 
 //: ### Defining Classes
+import Foundation
 
 class Person {
   var firstName: String
@@ -167,3 +168,17 @@ class EncapsulatedStudent {
  • Более медленное выделение памяти (heap).
  */
 
+
+class Car{
+    var speed = 0
+}
+
+let raceCar = Car()
+raceCar.speed = 250
+
+let bus = raceCar
+bus.speed = 40
+
+print(bus.speed)
+print(raceCar.speed)
+print(bus === raceCar)
