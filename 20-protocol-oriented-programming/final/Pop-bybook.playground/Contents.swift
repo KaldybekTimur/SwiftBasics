@@ -138,3 +138,36 @@ struct NewHockeyRecord: TeamRecord, TieableRecord, DivisionalRecord, CustomStrin
  • При правильном использовании протоколы способствуют повторному использованию и инкапсуляции кода.
  
  */
+
+
+
+
+
+
+protocol A{
+    var a: Int { get }
+    var b: Int { get }
+    func test()
+}
+
+
+struct a : A{
+    
+    var a: Int
+    var b: Int
+    
+    func test() {
+        print("test")
+    }
+}
+
+extension A {
+    var testB: Int{
+        a + b
+    }
+}
+
+var c = a(a: 2, b: 2)
+
+c.testB
+
